@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('background.svg');
+            background-size: cover;
+            background-position: center;
+            font-family: "Anton", sans-serif;
+            color: white;
+            flex-direction: column;
+        }
+
+        #title {
+            position: relative;
+            top: -20px;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #counter-container {
+            position: relative;
+            top: -20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        #counter {
+            font-size: 5em;
+            font-weight: bold;
+            letter-spacing: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="title">Tổng số phiếu</div>
+<div id="counter-container">
+    <div id="counter">0/134</div>
+</div>
+
+<script>
+    let currentNumber = 0;
+    const total = 134;
+    const counterElement = document.getElementById('counter');
+
+    // Update the displayed number
+    function updateCounter() {
+        counterElement.textContent = `${currentNumber}/${total}`;
+    }
+
+    // Listen for spacebar keypress
+    document.addEventListener('keydown', function(event) {
+        if (event.code === 'Space') {
+            event.preventDefault(); // Ngăn trang cuộn khi nhấn space
+            if (currentNumber < total) {
+                currentNumber++;
+                updateCounter();
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
